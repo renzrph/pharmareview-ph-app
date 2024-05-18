@@ -3,6 +3,7 @@ import BackToModule from "../../components/BackToModule/BackToModule";
 import Result from "../../components/Result/Result";
 import NextButton from "../../components/NextButton/NextButton";
 import QuestionTracker from "../../components/QuestionTracker/QuestionTracker";
+import questionsData from "../../assets/module6.json";
 
 const ModuleSix = () => {
   const [questions, setQuestions] = useState([]);
@@ -11,15 +12,27 @@ const ModuleSix = () => {
   const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
   const [answersDisabled, setAnswersDisabled] = useState(false);
 
+  // useEffect(() => {
+  //   const fetchQuestions = async () => {
+  //     try {
+  //       const response = await fetch("/src/assets/module6.json");
+  //       if (!response.ok) {
+  //         throw new Error("Failed to fetch questions");
+  //       }
+  //       const data = await response.json();
+  //       setQuestions(data.questions);
+  //     } catch (error) {
+  //       console.error("Error fetching questions:", error);
+  //     }
+  //   };
+
+  //   fetchQuestions();
+  // }, []);
+
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await fetch("/src/assets/module6.json");
-        if (!response.ok) {
-          throw new Error("Failed to fetch questions");
-        }
-        const data = await response.json();
-        setQuestions(data.questions);
+        setQuestions(questionsData.questions);
       } catch (error) {
         console.error("Error fetching questions:", error);
       }
